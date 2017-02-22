@@ -45,3 +45,24 @@ function renderItem(item, itemId, itemTemplate, itemDataAttr) {
   element.find('.js-shopping-item-toggle')
   element.attr(itemDataAttr, itemId);
   return element;
+
+function renderList(state, listElement, itemDataAttr) {
+  var itemsHTML = state.items.map(
+    function(item, index) {
+      return renderItem(item, index, listItemTemplate, itemDataAttr);
+  });
+  listElement.html(itemsHTML);
+}
+
+function handleItemAdds(
+  formElement, newItemIdentifier, itemDataAttr, listElement, state) {
+
+  formElement.submit(function(event) {
+    event.preventDefault();
+    var newItem = formElement.find(newItemIdentifier).val();
+    addItem(state, newItem);
+    renderList(state, listElement, itemDataAttr);
+    // reset form
+    this.reset();
+  });
+}
