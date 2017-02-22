@@ -66,3 +66,34 @@ function handleItemAdds(
     this.reset();
   });
 }
+
+function handleItemDeletes(
+  formElement, removeIdentifier, itemDataAttr, listElement, state) {
+
+  listElement.on('click', removeIdentifier, function(event) {
+    var itemIndex = parseInt($(this).closest('li').attr(itemDataAttr));
+    deleteItem(state, itemIndex);
+    renderList(state, listElement, itemDataAttr);
+  })
+}
+
+function handleItemToggles(
+  listElement, toggleIdentifier, itemDataAttr, state) {
+
+  listElement.on('click', toggleIdentifier, function(event) {
+    var itemId = $(event.currentTarget.closest('li')).attr(itemDataAttr);
+    var oldItem = getItem(state, itemId);
+
+    updateItem(state, itemId, {
+      displayName: oldItem.displayName,
+      checkedOff: !oldItem.checkedOff
+    });
+    renderList(state, listElement, itemDataAttr)
+  });
+}
+//had to look this one up. couldnt figure out//
+$(function() {
+  var formElement = $('#js-shopping-list-form');
+  var listElement = $('.js-shopping-list');
+
+var newItemIdentifier = '#js-new-item';
