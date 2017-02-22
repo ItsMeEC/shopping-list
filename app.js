@@ -1,3 +1,7 @@
+var state = {
+  items: []
+};
+
 var listItemTemplate = (
   '<li>' +
     '<span class="shopping-item js-shopping-item"></span>' +
@@ -11,3 +15,10 @@ var listItemTemplate = (
     '</div>' +
   '</li>'
 );
+
+function addItem(state, item) {
+  state.items.push({
+    displayName: item,
+    checkedOff: false
+  });
+}
