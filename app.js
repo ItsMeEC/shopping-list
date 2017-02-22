@@ -96,4 +96,19 @@ $(function() {
   var formElement = $('#js-shopping-list-form');
   var listElement = $('.js-shopping-list');
 
+
+//was able to determine the first 3 vars. forgot the last orig//
 var newItemIdentifier = '#js-new-item';
+
+var removeIdentifier = '.js-shopping-item-delete';
+
+var itemDataAttr = 'data-list-item-id';
+
+var toggleIdentifier = '.js-shopping-item-toggle'
+
+handleItemAdds(
+    formElement, newItemIdentifier, itemDataAttr, listElement, state);
+  handleItemDeletes(
+    formElement, removeIdentifier, itemDataAttr, listElement, state);
+  handleItemToggles(listElement, toggleIdentifier, itemDataAttr, state);
+});
