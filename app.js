@@ -22,3 +22,15 @@ function addItem(state, item) {
     checkedOff: false
   });
 }
+
+function getItem(state, itemIndex) {
+  return state.items[itemIndex];
+}
+
+function deleteItem(state, itemIndex) {
+  state.items.splice(itemIndex, 1);
+}
+
+function updateItem(state, itemIndex, newItemState) {
+  state.items[itemIndex] = newItemState;
+}
