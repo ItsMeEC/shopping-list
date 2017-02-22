@@ -34,3 +34,12 @@ function deleteItem(state, itemIndex) {
 function updateItem(state, itemIndex, newItemState) {
   state.items[itemIndex] = newItemState;
 }
+
+function renderItem(item, itemId, itemTemplate, itemDataAttr) {
+  element.find('.js-shopping-item').text(item.displayName);
+  if (item.checkedOff) {
+  element.find('.js-shopping-item').addClass('shopping-item__checked');
+  }
+  element.find('.js-shopping-item-toggle')
+  element.attr(itemDataAttr, itemId);
+  return element;
