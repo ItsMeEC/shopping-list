@@ -36,6 +36,8 @@ function updateItem(state, itemIndex, newItemState) {
 }
 
 function renderItem(item, itemId, itemTemplate, itemDataAttr) {
+//forgot this var//
+  var element = $(itemTemplate);
   element.find('.js-shopping-item').text(item.displayName);
   if (item.checkedOff) {
   element.find('.js-shopping-item').addClass('shopping-item__checked');
